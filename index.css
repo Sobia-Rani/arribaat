@@ -9,3 +9,42 @@
 	border-radius:10px;
 	padding: 5px 10px;
 }
+
+#topline{
+	flex-direction: row;
+}
+
+#logoheading{
+	width: 10%;
+}
+
+@media(max-width:1000px){
+	#logoheading{
+		width:30%
+	}
+}
+
+@media(max-width:450px){
+	
+
+
+#logoheading{
+	width: 50%;
+}
+
+
+.heading-box{
+	background-color:blue;
+
+}
+
+#topline{
+	flex-direction: column;
+}
+
+
+
+
+
+
+}
