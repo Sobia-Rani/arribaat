@@ -137,6 +137,245 @@
   </section>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>کتب خانہ</title>
+  <style>
+    body {
+      font-family: "Noto Nastaliq Urdu", sans-serif;
+      background: #eef2f7;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+      text-align: right;
+    }
+    header {
+      background: #004aad;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .filters {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .filters button {
+      background: #004aad;
+      color: white;
+      border: none;
+      margin: 5px;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .filters button.active {
+      background: #007bff;
+    }
+    .search-box {
+      text-align: center;
+      margin: 20px;
+    }
+    .search-box input {
+      padding: 10px;
+      width: 70%;
+      border-radius: 5px;
+      border: 1px solid #aaa;
+      font-size: 16px;
+    }
+    .library {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+    .book {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      padding: 15px;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .book:hover {
+      transform: translateY(-5px);
+    }
+    .book img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .book h3 {
+      margin: 10px 0;
+      font-size: 18px;
+      color: #333;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .buttons a {
+      text-decoration: none;
+      background: #004aad;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .buttons a:hover {
+      background: #007bff;
+    }
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>📚 ہماری کتابوں کی لائبریری</header>
+
+<!-- 🔹 Category Buttons -->
+<div class="filters">
+  <button class="active" onclick="filterBooks('all')">تمام</button>
+  <button onclick="filterBooks('fiqh')">فقہ</button>
+  <button onclick="filterBooks('seerat')">سیرت</button>
+  <button onclick="filterBooks('tafsir')">تفسیر</button>
+  <button onclick="filterBooks('aqeeda')">عقیدہ</button>
+</div>
+
+<!-- 🔍 Search -->
+<div class="search-box">
+  <input type="text" id="search" placeholder="کتاب تلاش کریں...">
+</div>
+
+<!-- 📚 Books -->
+<div class="library" id="library">
+
+  <div class="book" data-category="fiqh">
+    <img src="book1.jpg" alt="Book 1">
+    <h3>فقہ اسلامی</h3>
+    <div class="buttons">
+      <a href="book2.pdf" target="_blank">آن لائن پڑھیں</a>
+      <a href="book2.pdf" download="book2.pdf">ڈاؤن لوڈ کریں</a>
+    </div>
+  </div>
+
+  <div class="book" data-category="seerat">
+    <img src="book.jpg" alt="Book ">
+    <h3>سیرت النبی ﷺ</h3>
+    <div class="buttons">
+      <a href="book.pdf" target="_blank">آن لائن پڑھیں</a>
+      <a href="book.pdf" download="book.pdf">ڈاؤن لوڈ کریں</a>
+    </div>
+  </div>
+
+  <div class="book" data-category="tafsir">
+    <img src="book3.jpg" alt="Book 3">
+    <h3>تفسیر القرآن</h3>
+    <div class="buttons">
+      <a href="#" onclick="openBook('books/tafsir.pdf')">آن لائن پڑھیں</a>
+      <a href="books/tafsir.pdf" download>ڈاؤن لوڈ کریں</a>
+    </div>
+  </div>
+
+  <div class="book" data-category="aqeeda">
+    <img src="book4.jpg" alt="Book 4">
+    <h3>عقائد اسلام</h3>
+    <div class="buttons">
+      <a href="#" onclick="openBook('books/aqeeda.pdf')">آن لائن پڑھیں</a>
+      <a href="books/aqeeda.pdf" download>ڈاؤن لوڈ کریں</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- 📖 PDF Reader -->
+<iframe id="bookFrame"></iframe>
+
+<script>
+  // 🔍 Search Function
+  const search = document.getElementById('search');
+  search.addEventListener('input', function () {
+    const value = this.value.toLowerCase();
+    document.querySelectorAll('.book').forEach(book => {
+      book.style.display = book.innerText.toLowerCase().includes(value) ? 'block' : 'none';
+    });
+  });
+
+  // 📚 Filter by Category
+  function filterBooks(category) {
+    document.querySelectorAll('.filters button').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('.book').forEach(book => {
+      if (category === 'all' || book.dataset.category === category) {
+        book.style.display = 'block';
+      } else {
+        book.style.display = 'none';
+      }
+    });
+  }
+
+  // 📖 Open Book
+  function openBook(pdf) {
+    const frame = document.getElementById('bookFrame');
+    frame.src = pdf;
+    frame.style.display = 'block';
+    window.scrollTo({ top: frame.offsetTop, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <!-- Footer -->
   <footer class="bg-green-700 text-white text-center py-4 mt-6" style="display: flex;
   justify-content: center; align-items: center;">
