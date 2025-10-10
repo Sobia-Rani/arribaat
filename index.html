@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YCFPXLP9KV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YCFPXLP9KV');
+</script>
     <title>Arribaat Islamic Institute | Learn Tajweed, Tafseer & Short Islamic Courses Online</title>
     <meta name="description" content="Learn Quran with Tajweed, Tafseer, Dars-e-Nizami & short Islamic courses online. Join now for authentic Islamic education from scholars.">
     <meta name="robots" content="index,follow">
@@ -12,13 +21,88 @@
 <link rel="icon" href="logo.jpeg" sizes="32x32" type="image/jpeg">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand-green: #0b7a3f; /* change color if needed */
+    --accent: #fff;
+    --muted:#6b7280;
+    --shadow: 0 6px 20px rgba(11,122,63,0.12);
+  }
+  body { font-family: "Inter", system-ui, Arial; }
+
+  /* floating button */
+  .feedback-fab {
+    position: fixed;
+    right: 24px;
+    bottom: 28px;
+    background: var(--brand-green);
+    color: var(--accent);
+    border-radius: 999px;
+    padding: 14px 18px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    z-index: 10000;
+    display:flex;
+    gap:10px;
+    align-items:center;
+  }
+  .feedback-fab svg{ width:20px; height:20px; }
+  .feedback-label{ display:none; font-weight:600;}
+  @media(min-width:640px){ .feedback-label{ display:inline-block;} }
+
+  /* modal backdrop */
+  .feedback-backdrop{
+    position:fixed; inset:0; background:rgba(0,0,0,0.35);
+    display:none; align-items:center; justify-content:center; z-index:10001;
+  }
+  .feedback-modal{
+    width: min(720px, 96%);
+    background: #fff;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 20px 60px rgba(2,6,23,0.2);
+  }
+  .feedback-header{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:8px;}
+  .feedback-title{ font-weight:700; font-size:18px; color:var(--brand-green); }
+  .close-btn{ background:transparent; border:none; font-size:18px; cursor:pointer; color:#444; }
+
+  .feedback-row{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-bottom:10px;}
+  .feedback-row.single{ grid-template-columns:1fr; }
+
+  label{ font-size:13px; color:#333; display:block; margin-bottom:6px; }
+  input[type="text"], input[type="email"], textarea, select {
+    width:100%; padding:10px 12px; border-radius:8px; border:1px solid #e5e7eb; font-size:14px;
+  }
+  textarea{ min-height:110px; resize:vertical; }
+
+  .small{ font-size:13px; color:var(--muted); margin-top:6px;}
+  .btn-submit{
+    background:var(--brand-green); color:white; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; font-weight:600;
+  }
+  .btn-secondary{ background:#f3f4f6; color:#111; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; }
+
+  .feedback-success{ padding:12px; background:#ecfdf5; color:#065f46; border-radius:8px; display:none; margin-top:8px;}
+  .feedback-error{ padding:12px; background:#ffebe8; color:#7f1d1d; border-radius:8px; display:none; margin-top:8px;}
+  .rating-group{ display:flex; gap:6px; align-items:center; }
+  .rating-btn{ background:#f3f4f6; padding:6px 10px; border-radius:8px; cursor:pointer; border:1px solid transparent; }
+  .rating-btn.active{ background:var(--brand-green); color:#fff; }
+  .loader{ display:inline-block; width:16px; height:16px; border:3px solid rgba(255,255,255,0.3); border-top-color:#fff; border-radius:50%; animation:spin 0.9s linear infinite; vertical-align:middle; margin-left:8px;}
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+
+
+
  </head>
   <body class="bg-gray-100 font-sans">
       <img src="logo.jpeg" style="width:10%"alt="JamiaLogo">
 
 
       <div id="topline" style="display: flex; align-items: center; justify-content: center;">
-        <h1 style="color:black; font-size:16px; border-radius:5px;"> <span class="heading-box">DAR UL IFTA</span> <span class="heading-box">tafseer</span></h1>
+        <h1 style="color:black; font-size:16px; border-radius:5px;"> <a href="daruliftah.html"><span class="heading-box">DAR UL IFTA</span></a> <span class="heading-box">courses</span></h1>
         <img id="logoheading" src="photo.jpeg"style="margin:20px">
         <h1><span class="heading-box"> Darse nizami</span> <a href="books.html"><span class="heading-box">BOOKS</span></a></h1>
       </div>
@@ -135,6 +219,188 @@
       
     </div>
   </section>
+
+
+
+
+
+   
+
+
+
+<button class="feedback-fab" id="openFeedback">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="feedback-label">Feedback</span>
+</button>
+
+<div class="feedback-backdrop" id="fbBackdrop" role="dialog" aria-hidden="true">
+  <div class="feedback-modal" role="document" aria-labelledby="fbTitle">
+    <div class="feedback-header">
+      <div>
+        <div id="fbTitle" class="feedback-title">ہمیں اپنی رائے دیں</div>
+        <div class="small">آپ کی رائے ہمارے لیے اہم ہے — چند سیکنڈ لیں</div>
+      </div>
+      <button class="close-btn" id="closeFeedback" aria-label="Close">✕</button>
+    </div>
+
+    <form id="feedbackForm">
+      <div class="feedback-row">
+        <div>
+          <label for="name">نام</label>
+          <input id="name" name="name" type="text" placeholder="آپ کا نام (اختیاری)">
+        </div>
+        <div>
+          <label for="email">ایمیل</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+        </div>
+      </div>
+
+      <div class="feedback-row single">
+        <div>
+          <label for="subject">موضوع</label>
+          <input id="subject" name="subject" type="text" placeholder="مختصر عنوان" required>
+        </div>
+      </div>
+
+      <div class="feedback-row single">
+        <div>
+          <label for="message">پیغام</label>
+          <textarea id="message" name="message" placeholder="اپنی رائے یا مسئلہ یہاں لکھیں..." required></textarea>
+        </div>
+      </div>
+
+      <div class="feedback-row">
+        <div>
+          <label for="category">قسم</label>
+          <select id="category" name="category">
+            <option value="general">عام رائے</option>
+            <option value="bug">خرابی / bug</option>
+            <option value="content">مواد / content</option>
+            <option value="feature">خصوصیت کی درخواست</option>
+          </select>
+        </div>
+        <div>
+          <label>درجہ بندی</label>
+          <div class="rating-group" id="ratingGroup">
+            <button type="button" class="rating-btn" data-value="5">5</button>
+            <button type="button" class="rating-btn" data-value="4">4</button>
+            <button type="button" class="rating-btn" data-value="3">3</button>
+            <button type="button" class="rating-btn" data-value="2">2</button>
+            <button type="button" class="rating-btn" data-value="1">1</button>
+          </div>
+          <input type="hidden" id="rating" name="rating" value="5">
+        </div>
+      </div>
+
+      <div style="display:flex; gap:8px; margin-top:10px; align-items:center;">
+       <a href="https://mail.google.com" target="_blank">
+ <button type="submit" class="btn-submit" id="submitBtn">بھیجیں</button></a>
+        <button type="button" class="btn-secondary" id="cancelBtn">منسوخ</button>
+        <div class="small" style="margin-left:auto;">ہم آپ کی معلومات شیئر نہیں کریں گے</div>
+      </div>
+
+      <div class="feedback-success" id="successBox">شکریہ! آپ کی رائے موصول ہو گئی ہے۔</div>
+      <div class="feedback-error" id="errorBox">کچھ غلط ہوا — دوبارہ کوشش کریں۔</div>
+    </form>
+  </div>
+</div>
+
+<script>
+  // UI logic
+  const openBtn = document.getElementById('openFeedback');
+  const backdrop = document.getElementById('fbBackdrop');
+  const closeBtn = document.getElementById('closeFeedback');
+  const cancelBtn = document.getElementById('cancelBtn');
+  openBtn.addEventListener('click', ()=>{ backdrop.style.display='flex'; document.getElementById('email').focus(); });
+  closeBtn.addEventListener('click', ()=>{ backdrop.style.display='none'; });
+  cancelBtn.addEventListener('click', ()=>{ backdrop.style.display='none'; });
+
+  // rating buttons
+  document.querySelectorAll('.rating-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.rating-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('rating').value = btn.dataset.value;
+    });
+  });
+  // default active
+  document.querySelector('.rating-btn[data-value="5"]').classList.add('active');
+
+  // submit via AJAX
+  const form = document.getElementById('feedbackForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const successBox = document.getElementById('successBox');
+  const errorBox = document.getElementById('errorBox');
+
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  successBox.style.display = 'none';
+  errorBox.style.display = 'none';
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = 'بھیج رہا ہے <span class="loader"></span>';
+
+  const data = {
+    name: form.name.value.trim(),
+    email: form.email.value.trim(),
+    subject: form.subject.value.trim(),
+    message: form.message.value.trim(),
+    category: form.category.value,
+    rating: form.rating.value,
+  };
+
+  try {
+    // Construct the email body
+    const body = `
+پیغام: ${data.message}
+
+نام: ${data.name}
+ای میل: ${data.email}
+زمرہ: ${data.category}
+ریٹنگ: ${data.rating}
+    `.trim();
+
+    // Encode subject and body
+    const subjectEncoded = encodeURIComponent(data.subject || "Feedback");
+    const bodyEncoded = encodeURIComponent(body);
+
+    // Hardcoded recipient email
+    const to = encodeURIComponent("youremail@example.com");
+
+    // Gmail compose URL
+    const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subjectEncoded}&body=${bodyEncoded}`;
+
+    // Open Gmail compose in new tab
+    const win = window.open(gmailURL, '_blank');
+
+    if (win) {
+      successBox.style.display = 'block';
+      form.reset();
+
+      // Reset rating
+      document.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('.rating-btn[data-value="5"]').classList.add('active');
+      document.getElementById('rating').value = '5';
+
+      setTimeout(() => {
+        backdrop.style.display = 'none';
+        successBox.style.display = 'none';
+      }, 1800);
+    } else {
+      errorBox.textContent = 'پاپ اپ بلاک ہو گیا ہے — براہ کرم اسے اجازت دیں۔';
+      errorBox.style.display = 'block';
+    }
+  } catch (err) {
+    errorBox.textContent = 'نیٹ ورک کی خرابی — دوبارہ کوشش کریں۔';
+    errorBox.style.display = 'block';
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = 'بھیجیں';
+  }
+});
+
+</script>
+
 
 
 
